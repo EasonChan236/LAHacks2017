@@ -4,6 +4,16 @@ import httplib
 import urlparse
 import json
 from xml.etree import ElementTree
+import os
+
+#def readInput():
+
+
+  #locale = raw_input('what language? ')
+  #voiceType = raw_input('What gender? ')
+  #voiceName = raw_input('what name? ')
+  #voiceType = voiceType.lower()
+  
 
 # Generate audio function
 def generateAudio( content, filename ):
