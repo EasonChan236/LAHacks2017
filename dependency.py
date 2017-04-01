@@ -40,6 +40,7 @@ if systemName == "U":
 	os.system('sudo easy_install requests')
 
 	print('installing sox')
+	os.system('sudo apt-get install libsox-fmt-mp3')
 	os.system('sudo apt-get install sox')
 
 else:
