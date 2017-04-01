@@ -1,25 +1,22 @@
 import web
 from web import form
 
-urls = ("/", "index")
+render = web.template.render('templates/')
+
+db = web.database(dbn='mysql', db = 'content')
+
+urls = ('/', 'index')
 app = web.application(urls, globals())
 
 myform = form.Form(
-                   form.Textbox("boe"),
-                   form.Textbox("bax",
-                                form.notnull,
-                                form.regexp('\d+', 'Must be a digit'),
-                                form.Validator('Must be more than 5', lambda x:int(x)>5)),
-                   form.Textarea('moe'),
-                   form.Checkbox('curly'), 
-                   form.Dropdown('french', ['mustard', 'fries', 'wine']))
+                   form.Textarea('Text',form.notnull, rows=50, cols=70, description = "Text Content"))
 
 class index:
-    
     def GET(self):
         form = myform()
-        # make sure you create a copy of the form by calling it (line above)
+        # make sure you create a copy of the form by calling it (line above) 
         # Otherwise changes will appear globally
+        
         return render.formtest(form)
     
     def POST(self):
@@ -29,18 +26,11 @@ class index:
         else:
             # form.d.boe and form['boe'].value are equivalent ways of
             # extracting the validated arguments from the form.
-            return "Grrreat success! boe: %s, bax: %s" % (form.d.boe, form['bax'].value)
+            # db.insert('content', form.Textarea)
+            i = web.input()
+            n = db.insert('todo2', title=i.Text)
+            return "Grrreat success!"
 
-    def GET(self):
-        return  """<html>
-            <head>
-            <title>Fairy Tale</title>
-            </head>
-            <body>
-            <h1>Fairy Tale</h1>
-            <img src="/static/logo.png" alt="SAP Logo" width="300px" height="300px"/>
-            </body></html>"""
-
-if __name__ == "__main__":
-    app = web.application(urls, globals())
+if __name__=="__main__":
+    web.internalerror = web.debugerror
     app.run()
