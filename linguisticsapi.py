@@ -1,3 +1,4 @@
+
 import requests
 
 
@@ -13,7 +14,7 @@ class Token:
 
 #Generate sentence from [Tokens]
 def toSentence(tokens):
-    " ".join([tk.name for tk in tokens])
+    return " ".join([tk.name for tk in tokens])
 
 
 def analyze(text):
@@ -59,8 +60,8 @@ def analyze(text):
         for j, token in enumerate(sentence["Tokens"]):
             pos = float(int(token["Offset"]) - gensentenceoffset)  / gensentencelength
             genTk = Token(token["NormalizedToken"], "NN" in posTags[i][j], pos)
-            gensentence += [genTk]
-        gensentences += [gensentence]
+            gensentence.append(genTk)
+        gensentences.append(gensentence)
     
 
     print gensentences
@@ -71,10 +72,8 @@ def analyze(text):
 
     return gensentences
 
-
-
-
-analyze("""
-        
-        Hi, How are you. I went to school yesterday.
-""")
+if __name__ == "__main__":
+    analyze("""
+            
+            Hi, How are you. I went to school yesterday.
+    """)

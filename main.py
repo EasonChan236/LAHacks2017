@@ -3,6 +3,7 @@ import argparse
 import bingImageAPI
 import linguisticsapi
 import concat_main
+import cog_speech
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", help="increase output verbosity")
@@ -15,13 +16,16 @@ def debugFlag():
         return ""
 
 def generateVideo(searchString, imageName):
-    filename = request(searchString, imageName)
+    print "GENERATING " + searchString
+    filename = bingImageAPI.request(searchString, imageName)
     if filename is None:
         print "Error in creating " + searchString
         return
+#this will get reassigned
     audio_name = imageName + "_audio.aiff"
     #os.system('echo "' +  searchString + '" > textToBeConverted')
     #os.system('say -f textToBeConverted -o ' + audio_name)
+
 #create new audio name
     audio_name = cog_speech.generateAudio(searchString, audio_name)
     video_name = filename + "_out.m4v"
@@ -32,13 +36,15 @@ def generateVideo(searchString, imageName):
 
 def generateSentenceVideo(sentence, outputVideoName):
     sentences = linguisticsapi.analyze(sentence)
+    print sentences
     splitted = [linguisticsapi.toSentence(st) for st in sentences]
+    print splitted 
     for i, string in enumerate(splitted):
         generateVideo(string, "img" + str(i))
     concat_main.concat(outputVideoName)
 
-if __name__ = "__main__" :
-#generateSentenceVideo("The United States of America (USA), commonly known as the United States (U.S.) or America, is a constitutional federal republic composed of 50 states, a federal district, five major self-governing territories, and various possessions.", "output")
+if __name__ == "__main__" :
+#    generateSentenceVideo("The United States of America (USA), commonly known as the United States (U.S.) or America, is a constitutional federal republic composed of 50 states, a federal district, five major self-governing territories, and various possessions.", "output")
     content = """
     Microsoft Windows (or simply Windows) is a metafamily of graphical operating systems developed, marketed, and sold by Microsoft. It consists of several families of operating systems, each of which cater to a certain sector of the computing industry with the OS typically associated with IBM PC compatible architecture. Active Windows families include Windows NT, Windows Embedded and Windows Phone; these may encompass subfamilies, e.g. Windows Embedded Compact (Windows CE) or Windows Server. Defunct Windows families include Windows 9x; Windows 10 Mobile is an active product, unrelated to the defunct family Windows Mobile.
 

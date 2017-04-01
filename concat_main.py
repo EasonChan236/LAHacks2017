@@ -1,3 +1,5 @@
+import os
+
 def concat(outputVideoName):
     #with open("myfileList.txt") as f:
     #    command = "MP4Box -force-cat "
@@ -6,5 +8,6 @@ def concat(outputVideoName):
     #    command += "-new " + outputVideoName + ".mp4"
     #os.system(command)
         
+    os.chdir('build')
 
-    os.system("ffmpeg -f concat -i myfileList.txt -pix_fmt yuv420p " + outputVideoName + ".mp4" + debugFlag())
+    os.system("ffmpeg -f concat -i myfileList.txt -pix_fmt yuv420p " + outputVideoName + ".mp4" )
