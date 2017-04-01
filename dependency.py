@@ -18,8 +18,8 @@ if systemName == "M":
 	print('installing request for python 3')
 	os.system('pip install requests')
 
-	print('installing mid')
-	os.system('pip install mad')
+	print('installing sox')
+	os.system('pip install sox')
 
 if systemName == "U":
 	print("for Ubuntu")
@@ -39,8 +39,8 @@ if systemName == "U":
 	print('installing request for python 3')
 	os.system('sudo easy_install requests')
 
-	print('installing mid')
-	os.system('pip install mad')
+	print('installing sox')
+	os.system('sudo apt-get install sox')
 
 else:
 	print("Invalid input")
