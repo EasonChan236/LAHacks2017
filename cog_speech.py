@@ -1,4 +1,8 @@
-import http.client, urllib.parse, json
+#import http.client
+import httplib
+#import urllib.parse
+import urlparse
+import json
 from xml.etree import ElementTree
 
 # Generate audio function
@@ -16,7 +20,8 @@ def generateAudio( content, filename ):
 
 # Connect to server to get the Access Token
   print ("Connect to server to get the Access Token **")
-  conn = http.client.HTTPSConnection(AccessTokenHost)
+  #conn = http.client.HTTPSConnection(AccessTokenHost)
+  conn = httplib.HTTPSConnection(AccessTokenHost)
 
 # post request to the online api file
   print("Make a request **")
@@ -49,7 +54,8 @@ def generateAudio( content, filename ):
 
 # Connect to server to synthesize the wave
   print ("\nConnect to server to synthesize the wave")
-  conn = http.client.HTTPSConnection("speech.platform.bing.com")
+  #conn = http.client.HTTPSConnection("speech.platform.bing.com")
+  conn = httplib.HTTPSConnection("speech.platform.bing.com")
 # Generate Output
   print("********************************************")
   conn.request("POST", "/synthesize", ElementTree.tostring(body), headers)
@@ -58,7 +64,7 @@ def generateAudio( content, filename ):
   data = response.read()
 # Create Output
   print("Generating audio file **")
-  with open(filename+".wav",'wb') as f:
+  with open(filename+".mpeg",'wb') as f:
     f.write(data)
   conn.close()
   print("The synthesized wave length: %d" %(len(data)))
