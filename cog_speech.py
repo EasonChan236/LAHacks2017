@@ -6,17 +6,26 @@ import json
 from xml.etree import ElementTree
 import os
 
-#def readInput():
-
-
-  #locale = raw_input('what language? ')
-  #voiceType = raw_input('What gender? ')
-  #voiceName = raw_input('what name? ')
-  #voiceType = voiceType.lower()
-  
-
 # Generate audio function
 def generateAudio( content, filename ):
+
+  while(1):
+    language = raw_input('What Region? 1.US or 2.IN or 3.UK ')
+    if(language == "1"):
+      locale = 'en-US'
+      nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'
+      break
+
+    if(language == "2"):
+      locale = 'en-IN'
+      nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)'
+      break
+
+    if(language == "3"):
+      locale = 'en-GB'
+      nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)'
+      break
+
   # Global Constants
   print("Set global constants **")
   apiKey = "a6ea0d90cf4d40a882e330b72ba27c13"
@@ -48,11 +57,16 @@ def generateAudio( content, filename ):
   print ("Access Token: " + accesstoken)
   print("Set the access token **")
   body = ElementTree.Element('speak', version='1.0')
-  body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
+  body.set('{http://www.w3.org/XML/1998/namespace}lang', locale)
   voice = ElementTree.SubElement(body, 'voice')
-  voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
+  voice.set('{http://www.w3.org/XML/1998/namespace}lang', locale)
   voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
-  voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
+  voice.set('name', nameMapping)
+  #body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
+  #voice = ElementTree.SubElement(body, 'voice')
+  #voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
+  #voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
+  #voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
   voice.text = content
 
   headers = {"Content-type": "application/ssml+xml", 
