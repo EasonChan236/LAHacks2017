@@ -4,7 +4,6 @@ import sys
 
 #print ('Are you using Mac or Ubuntu? Enter M or U?')
 systemName = raw_input('Are you using Mac or Ubuntu? Enter M or U? : ');
-
 if systemName == "M":
 	print("for Mac")
 	print("installing brew")
@@ -19,6 +18,9 @@ if systemName == "M":
 	print('installing request for python 3')
 	os.system('pip install requests')
 
+	print('installing mid')
+	os.system('pip install mad')
+
 if systemName == "U":
 	print("for Ubuntu")
 	print("installing ffmpeg")
@@ -26,11 +28,19 @@ if systemName == "U":
 	os.system('sudo apt-get update')
 	os.system('sudo apt-get install ffmpeg gstreamer0.10-ffmpeg')
 
+
 	print("installing python")
 	os.system('sudo apt-get install python3')
 
+	print("insalling pip")
+	os.system("apt-get update")
+	os.system('apt-get -y install python-pip')
+
 	print('installing request for python 3')
 	os.system('sudo easy_install requests')
+
+	print('installing mid')
+	os.system('pip install mad')
 
 else:
 	print("Invalid input")
