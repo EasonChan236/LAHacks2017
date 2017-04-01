@@ -46,7 +46,7 @@ def generateAudio( content, filename ):
   voice.text = content
 
   headers = {"Content-type": "application/ssml+xml", 
-    "X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm", 
+    "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3",
     "Authorization": "Bearer " + accesstoken, 
     "X-Search-AppId": "07D3234E49CE426DAA29772419F436CA", 
     "X-Search-ClientID": "1ECFAE91408841A480F00935DC390960", 
@@ -64,10 +64,11 @@ def generateAudio( content, filename ):
   data = response.read()
 # Create Output
   print("Generating audio file **")
-  with open(filename+".mpeg",'wb') as f:
+  with open(filename+".mp3",'wb') as f:
     f.write(data)
   conn.close()
   print("The synthesized wave length: %d" %(len(data)))
+  return filename+".mp3"
 
 # content check -- default
 print("Call generating audio function **")

@@ -3,6 +3,7 @@ import os
 import re
 import requests
 from subprocess import call
+import cog_speech
 
 
 os.system('rm -rf build')
@@ -65,8 +66,10 @@ def generateVideo(searchString, imageName):
         print "Error in creating " + searchString
         return
     audio_name = imageName + "_audio.aiff"
-    os.system('echo "' +  searchString + '" > textToBeConverted')
-    os.system('say -f textToBeConverted -o ' + audio_name)
+    #os.system('echo "' +  searchString + '" > textToBeConverted')
+    #os.system('say -f textToBeConverted -o ' + audio_name)
+#create new audio name
+    audio_name = cog_speech.generateAudio(searchString, audio_name)
     video_name = filename + "_out.m4v"
     os.system("echo file '" + video_name + "' >> myfileList.txt")
     os.system("ffmpeg -loop 1 -f image2 -i " + filename + " -i " + audio_name + " -shortest -f mpeg -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" " + video_name + debugFlag())
