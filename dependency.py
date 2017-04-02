@@ -21,8 +21,8 @@ if systemName == "M":
 	print('installing sox')
 	os.system('pip install sox')
 
-    print('installing beautifulsoup')
-    os.system('pip install beautifulsoup')
+        print('installing beautifulsoup')
+        os.system('pip install beautifulsoup')
 
 if systemName == "U":
 	print("for Ubuntu")
@@ -32,7 +32,7 @@ if systemName == "U":
 	os.system('sudo apt-get install ffmpeg gstreamer0.10-ffmpeg')
 
 
-    print("installing python")
+        print("installing python")
 	os.system('sudo apt-get install python3')
 
 	print("insalling pip")
@@ -46,8 +46,8 @@ if systemName == "U":
 	os.system('sudo apt-get install libsox-fmt-mp3')
 	os.system('sudo apt-get install sox')
 
-    print('installing beautifulsoup')
-    os.system('sudo apt-get install python-bs4')
+        print('installing beautifulsoup')
+        os.system('sudo apt-get install python-bs4')
 
 else:
 	print("Invalid input")
