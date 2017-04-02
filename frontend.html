@@ -12,13 +12,25 @@
 </div>
 
 <div class = "combine" style="margin-top: 15%;">
+	<form method="GET" action="http://localhost:8293">
 	<div class = "form" style="display: flex;justify-content: center;top:50%;">
-		<textarea class = "message" style="height:50%;width:50%;opacity:0.8;
+		<textarea  name="text" class = "message" style="height:50%;width:50%;opacity:0.8;
 		border-width: 3px;border-color: lightgrey;resize:none"> </textarea>
+		<select name="language" style="font-size:3em">
+			<option value="1">US</option>
+			<option value="2">IN</option>
+			<option value="3">UK</option>
+		</select>
+
+		<select name="sex" style="font-size:3em">
+			<option value="1">Female</option>
+			<option value="2">Male</option>
+		</select>
 	</div>
 	<div class = "button" style="display: flex;justify-content: center;margin-top:2em;">
 		<button class="convert" style="width:100px;height:50px;background:no-repeat;border-width: 5px;font-size:14px;font-style: bold;">Convert</button>
 	</div>
+	</form>
 </div>
 
 </body>
