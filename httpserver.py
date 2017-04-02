@@ -3,6 +3,9 @@ import simplejson
 import BaseHTTPServer
 import videoGenerationAPI
 import urlparse
+import webGenAPI
+import searchAPI
+import simplejson as json
 
 
 HOST_NAME = '0.0.0.0'
@@ -16,6 +19,9 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.end_headers()
 
 
+
+
+#POST TO POST TEXT/URL
     def do_POST(self):
         self._set_headers()
         print self.__dict__
@@ -25,12 +31,18 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         args = urlparse.parse_qs(self.data_string)
 	print args
 
-        videoGenerationAPI.generateSentenceVideo(args["text"][0], "output", args["language"][0], args["sex"][0])
+        #GET TO SEARCH
+        if("search" in self.path):
+            res = searchAPI.search(args["searchText"][0])
+            print res
+            self.wfile.write(json.dumps([{"title":t, "url":u} for t , u in res]))
+        elif("weburl" in self.path):
+            webGenAPI.generateVideoFromURL(args["text"][0], "output", args["language"][0], args["sex"][0])
+            self.wfile.write('<script>location="http://13.88.30.233:8000/video.html";</script>')
+        else:
+            videoGenerationAPI.generateSentenceVideo(args["text"][0], "output", args["language"][0], args["sex"][0])
+            self.wfile.write('<script>location="http://13.88.30.233:8000/video.html";</script>')
 
-        #self.send_header("Location:", "http://13.88.30.233:8000/video.html")
-
-        #f = open("video.html")
-        self.wfile.write('<script>location="http://13.88.30.233:8000/video.html";</script>')
         return
     
 

@@ -115,8 +115,8 @@ def generateAudio( content, filename, language, gender):
     return filename+".mp3"
 
 # content check -- default
-print("Call generating audio function **")
 if __name__ == "__main__":
+     print("Call generating audio function **")
      content = """
      Please generate a content for this video, thank you!
      """

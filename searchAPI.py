@@ -8,7 +8,7 @@ def search(searchText):
 
     pages = json["webPages"]["value"]
 
-    print [(page["name"], page["url"] )for page in pages]
+    return [(page["name"], page["url"] )for page in pages]
 
 if __name__ == "__main__":
     print search("Hello, World!!!")
