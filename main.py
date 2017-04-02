@@ -18,7 +18,7 @@ def debugFlag():
     else:
         return ""
 
-def generateVideo(searchString, imageName):
+def generateVideo(searchString, imageName, language, sex):
     print "GENERATING " + searchString
     filename = bingImageAPI.request(searchString, imageName)
     if filename is None:
@@ -30,7 +30,7 @@ def generateVideo(searchString, imageName):
     #os.system('say -f textToBeConverted -o ' + audio_name)
 
 #create new audio name
-    audio_name = cog_speech.generateAudio(searchString, audio_name)
+    audio_name = cog_speech.generateAudio(searchString, audio_name, language, sex)
     createAudioFromImageAndAudio(filename, audio_name)
 
 #file name is the image file name. audio name is the audio file name
@@ -40,7 +40,12 @@ def createAudioFromImageAndAudio(filename, audio_name):
     os.system("ffmpeg -loop 1 -f image2 -i " + filename + " -i " + audio_name + " -shortest -f mpeg -pix_fmt yuv420p -vf \"scale=trunc(iw/2)*2:trunc(ih/2)*2\" " + video_name + debugFlag())
 
 
-def generateSentenceVideo(sentence, outputVideoName):
+#language : 1. US, 2. IN, 3. UK Sex 1. Female, 2.Male
+def generateSentenceVideo(sentence, outputVideoName, language, sex):
+    os.system('rm -rf build')
+    os.system('mkdir build')
+    os.chdir('build')
+
     re.sub(r'\([^\)]*\)', '', sentence)
     re.sub(r'\[[^\]]*\]', '', sentence)
     re.sub(r'\{[^\}]*\}', '', sentence)
@@ -48,7 +53,7 @@ def generateSentenceVideo(sentence, outputVideoName):
     
     print splitted 
     for i, string in enumerate(splitted):
-        generateVideo(string, "img" + str(i))
+        generateVideo(string, "img" + str(i), language, sex)
     concat_main.concat(outputVideoName)
 
 if __name__ == "__main__" :
@@ -58,5 +63,5 @@ if __name__ == "__main__" :
 
     """
 
-    generateSentenceVideo(content, "output");
+    generateSentenceVideo(content, "output", "1", "1");
     print "Output saved to build/output.mp4"

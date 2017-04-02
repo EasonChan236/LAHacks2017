@@ -6,9 +6,6 @@ from subprocess import call
 import cog_speech
 
 
-os.system('rm -rf build')
-os.system('mkdir build')
-os.chdir('build')
 
 def writeToFile(r, path):
     with open(path, 'wb') as f:
