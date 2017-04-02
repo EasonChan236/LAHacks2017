@@ -2,15 +2,12 @@ import time
 import BaseHTTPServer
 
 
-HOST_NAME = 'example.net' # !!!REMEMBER TO CHANGE THIS!!!
-PORT_NUMBER = 80 # Maybe set this to 9000.
+HOST_NAME = 'localhost' # !!!REMEMBER TO CHANGE THIS!!!
+PORT_NUMBER = 8293 # Maybe set this to 9000.
 
 
 class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
-    def do_HEAD(s):
-        s.send_response(200)
-        s.send_header("Content-type", "text/html")
-        s.end_headers()
+    
     def do_GET(s):
         """Respond to a GET request."""
         s.send_response(200)
