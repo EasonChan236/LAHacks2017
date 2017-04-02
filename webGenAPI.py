@@ -22,7 +22,7 @@ def generateVideoFromURL(url, outpufilename, language, sex):
 # break multi-headlines into a line each
     chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
 # drop blank lines
-    text = '\n'.join(chunk for chunk in chunks if chunk)
+    text = '\n'.join(chunk for i, chunk in enumerate(chunks) if chunk and i < 40)
 
     videoGenerationAPI.generateSentenceVideo(text, "output", language, sex)
 
