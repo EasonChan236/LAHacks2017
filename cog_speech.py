@@ -87,11 +87,6 @@ def generateAudio( content, filename ):
   voice.set('{http://www.w3.org/XML/1998/namespace}lang', locale)
   voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
   voice.set('name', nameMapping)
-  #body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
-  #voice = ElementTree.SubElement(body, 'voice')
-  #voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-  #voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
-  #voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
   voice.text = content
 
   headers = {"Content-type": "application/ssml+xml", 

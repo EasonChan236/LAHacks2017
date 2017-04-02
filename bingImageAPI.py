@@ -49,16 +49,7 @@ def request(searchName, imageName):
             return filename
     print "Image not found " + searchName
 
-import argparse
-parser = argparse.ArgumentParser()
-parser.add_argument("-v", help="increase output verbosity")
-args = parser.parse_args()
 
-def debugFlag():
-    if(args.v):
-        return " 2> /dev/null "
-    else:
-        return ""
 
 def generateVideo(searchString, imageName):
     filename = request(searchString, imageName)
