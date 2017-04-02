@@ -5,7 +5,7 @@ import videoGenerationAPI
 import urlparse
 
 
-HOST_NAME = '13.88.30.233' # !!!REMEMBER TO CHANGE THIS!!!
+HOST_NAME = 'localhost'
 PORT_NUMBER = 8293 # Maybe set this to 9000.
 
 
