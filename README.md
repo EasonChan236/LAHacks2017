@@ -1,4 +1,4 @@
-# TextToVideo
+# Hyperlink
 
 Based on Microsoft Azure cognitive APIs, our software can generate a video based on
 users' pure text input. By analyzing the key phrases and words in the text, our software
