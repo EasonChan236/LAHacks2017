@@ -19,8 +19,8 @@ Run "dependency.py"
 
 ## Code Example
 
-Bing Image Search API
-Bing Speech API
+* Bing Image Search API
+* Bing Speech API
 
 ## Built With
 
