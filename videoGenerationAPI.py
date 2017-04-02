@@ -65,3 +65,4 @@ if __name__ == "__main__" :
 
     generateSentenceVideo(content, "output", "1", "1");
     print "Output saved to build/output.mp4"
+    os.chdir('..')
