@@ -5,7 +5,7 @@ import videoGenerationAPI
 import urlparse
 
 
-HOST_NAME = 'localhost'
+HOST_NAME = '0.0.0.0'
 PORT_NUMBER = 8293 # Maybe set this to 9000.
 
 
@@ -23,13 +23,14 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
         print self.data_string
         args = urlparse.parse_qs(self.data_string)
+	print args
 
         videoGenerationAPI.generateSentenceVideo(args["text"][0], "output", args["language"][0], args["sex"][0])
 
-        self.send_header("Location:", "http://13.88.30.233:8000/video.html")
+        #self.send_header("Location:", "http://13.88.30.233:8000/video.html")
 
         #f = open("video.html")
-        #self.wfile.write(f.read())
+        self.wfile.write('<script>location="http://13.88.30.233:8000/video.html";</script>')
         return
     
 

@@ -32,6 +32,11 @@ def request(searchName, imageName):
     for i, entry in enumerate(jcontent["value"]):
         url = entry["contentUrl"]
         print "Requesting " + str(url)
+        imgFormat = entry["encodingFormat"]
+        if "gif" in imgFormat:
+            continue
+        if entry["width"] > 4000 or entry["height"] > 4000:
+            continue
         try:
             imgr = requests.request('GET', url, timeout=5) #stream = True, found on all tutorials, seems to be fine without it
         except:
@@ -40,7 +45,8 @@ def request(searchName, imageName):
             print "failed, firing new requests"
             continue
         else:
-            filename = imageName + "." + str(entry["encodingFormat"])
+	    
+            filename = imageName + "." + str(imgFormat)
             print "successful, writing to " + filename
             writeToFile(imgr, filename)
             return filename

@@ -46,17 +46,22 @@ def generateSentenceVideo(sentence, outputVideoName, language, sex):
     os.system('mkdir build')
     os.chdir('build')
 
-    re.sub(r'\([^\)]*\)', '', sentence)
-    re.sub(r'\[[^\]]*\]', '', sentence)
-    re.sub(r'\{[^\}]*\}', '', sentence)
-    re.sub(r'[^\x00-\x7F]+',' ', sentence)
+    sentence = re.sub(r'\([^\)]*\)', '', sentence)
+    sentence = re.sub(r'\[[^\]]*\]', '', sentence)
+    sentence = re.sub(r'\{[^\}]*\}', '', sentence)
     splitted = re.compile(r'[\.,]').split(sentence)
+    for i in range(0, len(splitted)):
+        splitted[i] = re.sub(r'[^A-Za-z0-9]+',' ', splitted[i])
+        splitted[i] = re.sub(r'[^\x00-\x7F]+',' ', splitted[i])
     
     print splitted 
-    for i, string in enumerate(splitted):
-        generateVideo(string, "img" + str(i), language, sex)
-    concat_main.concat(outputVideoName)
-    os.chdir('..')
+    try:
+        for i, string in enumerate(splitted):
+            generateVideo(string, "img" + str(i), language, sex)
+        concat_main.concat(outputVideoName)
+    except:
+        os.chdir('..')
+	raise
 
 if __name__ == "__main__" :
 #    generateSentenceVideo("The United States of America (USA), commonly known as the United States (U.S.) or America, is a constitutional federal republic composed of 50 states, a federal district, five major self-governing territories, and various possessions.", "output")
