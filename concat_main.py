@@ -8,6 +8,7 @@ def concat(outputVideoName):
     #    command += "-new " + outputVideoName + ".mp4"
     #os.system(command)
         
-    os.chdir('build')
+#    os.chdir('build')
+#    ASSUMING PATH IS ALREADY CORRECT
 
     os.system("ffmpeg -f concat -i myfileList.txt -pix_fmt yuv420p " + outputVideoName + ".mp4" )
