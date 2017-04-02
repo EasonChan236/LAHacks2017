@@ -9,7 +9,13 @@ their further interest in reading and learning.
 
 ## Getting Started
 
-Firstly, dependency
+Firstly, install all dependecies by runnning "dependency.py". Then user shall type in
+the enter 0.0.0.0:8080 in their browser and then enter the text they want to generate 
+a video for. They need to specify the gender and language that they expect in the video.
+
+### Prerequisites
+
+Run "dependency.py" 
 
 ## Code Example
 
