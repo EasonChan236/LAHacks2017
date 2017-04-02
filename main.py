@@ -1,3 +1,4 @@
+import re
 import os
 import argparse
 import bingImageAPI
@@ -40,9 +41,11 @@ def createAudioFromImageAndAudio(filename, audio_name):
 
 
 def generateSentenceVideo(sentence, outputVideoName):
-    sentences = linguisticsapi.analyze(sentence)
-    print sentences
-    splitted = [linguisticsapi.toSentence(st) for st in sentences]
+    re.sub(r'\([^\)]*\)', '', sentence)
+    re.sub(r'\[[^\]]*\]', '', sentence)
+    re.sub(r'\{[^\}]*\}', '', sentence)
+    splitted = re.compile(r'[\.,]').split(sentence)
+    
     print splitted 
     for i, string in enumerate(splitted):
         generateVideo(string, "img" + str(i))
