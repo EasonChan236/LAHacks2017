@@ -49,12 +49,14 @@ def generateSentenceVideo(sentence, outputVideoName, language, sex):
     re.sub(r'\([^\)]*\)', '', sentence)
     re.sub(r'\[[^\]]*\]', '', sentence)
     re.sub(r'\{[^\}]*\}', '', sentence)
+    re.sub(r'[^\x00-\x7F]+',' ', sentence)
     splitted = re.compile(r'[\.,]').split(sentence)
     
     print splitted 
     for i, string in enumerate(splitted):
         generateVideo(string, "img" + str(i), language, sex)
     concat_main.concat(outputVideoName)
+    os.chdir('..')
 
 if __name__ == "__main__" :
 #    generateSentenceVideo("The United States of America (USA), commonly known as the United States (U.S.) or America, is a constitutional federal republic composed of 50 states, a federal district, five major self-governing territories, and various possessions.", "output")
@@ -65,4 +67,3 @@ if __name__ == "__main__" :
 
     generateSentenceVideo(content, "output", "1", "1");
     print "Output saved to build/output.mp4"
-    os.chdir('..')
