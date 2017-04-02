@@ -6,25 +6,50 @@ import json
 from xml.etree import ElementTree
 import os
 
+
+while(1):
+  language = raw_input('What Region? 1.US or 2.IN or 3.UK ')
+  if(language == "1"):
+    locale = 'en-US'
+    nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'
+    break
+
+  if(language == "2"):
+    locale = 'en-IN'
+    nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)'
+    break
+
+  if(language == "3"):
+    locale = 'en-GB'
+    nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)'
+    break
+
+while(1):
+  gender = raw_input('what gender? 1.Female or 2.Male')
+  sex = 'Female' 
+
+  if(gender == "1"):
+   break
+
+  if(gender == "2" and language == "1"):
+    nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'
+    sex = 'Male'
+    break   
+
+  if(gender == "2" and language == "2"):
+    sex = 'Male'
+    nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-IN, Ravi, Apollo)'
+    break
+
+  if(gender == "2" and language == "3"):
+    sex = 'male'
+    nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-GB, George, Apollo)'
+    break 
+
+ 
 # Generate audio function
 def generateAudio( content, filename ):
 
-  while(1):
-    language = raw_input('What Region? 1.US or 2.IN or 3.UK ')
-    if(language == "1"):
-      locale = 'en-US'
-      nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'
-      break
-
-    if(language == "2"):
-      locale = 'en-IN'
-      nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-IN, Heera, Apollo)'
-      break
-
-    if(language == "3"):
-      locale = 'en-GB'
-      nameMapping = 'Microsoft Server Speech Text to Speech Voice (en-GB, Susan, Apollo)'
-      break
 
   # Global Constants
   print("Set global constants **")
