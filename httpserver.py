@@ -26,9 +26,10 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         videoGenerationAPI.generateSentenceVideo(args["text"][0], "output", args["language"][0], args["sex"][0])
 
+        self.send_header("Location:", "http://localhost:8000/video.html")
 
-        f = open("video.html")
-        self.wfile.write(f.read())
+        #f = open("video.html")
+        #self.wfile.write(f.read())
         return
     
 
