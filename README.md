@@ -13,9 +13,13 @@ Firstly, install all dependecies by runnning "dependency.py". Then user shall ty
 the enter 0.0.0.0:8080 in their browser and then enter the text they want to generate 
 a video for. They need to specify the gender and language that they expect in the video.
 
-### Prerequisites
+### Dependencies
 
-Run "dependency.py" 
+This package depends on the following softwares:
+
+Python Library: requests, sox
+System Packages: ffmpeg
+
 
 ## Code Example
 
@@ -37,7 +41,10 @@ Run "dependency.py"
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPL v3.0  License.
+
+We made this decision since `ffmpeg` is licensed under GPL.
+
 
 ## Acknowledgments
 

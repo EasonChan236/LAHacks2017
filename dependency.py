@@ -2,6 +2,19 @@
 import os
 import sys
 
+# This file is done by an unexperienced developer, (team member)
+# NOTE: THIS IS NOT INDUSTRIAL PRACTICE, please use seperate files to 
+# install dependency. We haven't done the dependency install yet.
+#
+# You need to install the following dependency:
+#
+# Python Libraries
+#   pip install requests sox 
+#
+# System Libraries
+#   ffmpeg
+# 
+
 #print ('Are you using Mac or Ubuntu? Enter M or U?')
 systemName = raw_input('Are you using Mac or Ubuntu? Enter M or U? : ');
 if systemName == "M":
