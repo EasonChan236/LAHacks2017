@@ -45,6 +45,12 @@ This project is licensed under the GPL v3.0  License.
 
 We made this decision since `ffmpeg` is licensed under GPL.
 
+## Additional Notice
+
+Although we've included several API keys, but you are not authorized to use 
+those keys without written consent from us. You are subject to any financial
+charges that may occur if you used our included API keys.
+
 
 ## Acknowledgments
 
