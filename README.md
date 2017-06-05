@@ -17,8 +17,8 @@ a video for. They need to specify the gender and language that they expect in th
 
 This package depends on the following softwares:
 
-Python Library: requests, sox
-System Packages: ffmpeg
+- Python Library: `requests`, `sox`
+- System Packages: `ffmpeg`
 
 
 ## Code Example
