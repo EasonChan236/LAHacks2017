@@ -34,7 +34,7 @@ This package depends on the following softwares:
 ## Authors
 
 * **Dingcheng Hu** - [UC San Diego]
-* **Pengyu Chen** - [UC San Diego]
+* **Pengyu Chen** - [UC San Diego] - [Github](https://github.com/EasonChan236)
 * **Wanhui Qiao** - [UC San Diego]
 * **Renxu Hu** - [UC San Diego]
 * **Zhibo Chen** - [UC San Diego]
